@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream-50 text-gray-900 font-sans antialiased;
+    overscroll-behavior: none;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-rose-500 hover:bg-rose-600 active:bg-rose-700
+           text-white font-semibold rounded-2xl px-6 py-3
+           transition-all duration-200 active:scale-95
+           shadow-card disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-white hover:bg-rose-50 active:bg-rose-100
+           text-rose-500 font-semibold rounded-2xl px-6 py-3
+           border border-rose-200 transition-all duration-200
+           active:scale-95 disabled:opacity-50;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-gray-100 active:bg-gray-200
+           text-gray-600 font-medium rounded-2xl px-4 py-2
+           transition-all duration-200 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white rounded-3xl shadow-card p-4 animate-fade-in;
+  }
+
+  .input-base {
+    @apply w-full bg-gray-50 border border-gray-200 rounded-2xl
+           px-4 py-3 text-gray-900 placeholder-gray-400
+           focus:outline-none focus:ring-2 focus:ring-rose-300
+           focus:border-rose-400 transition-all duration-200;
+  }
+
+  .page {
+    @apply min-h-screen bg-cream-50 pb-20 pt-4 px-4 max-w-md mx-auto;
+  }
+
+  .bottom-nav-item {
+    @apply flex flex-col items-center justify-center gap-1
+           text-gray-400 hover:text-rose-500 transition-colors duration-200
+           cursor-pointer;
+  }
+
+  .bottom-nav-item.active {
+    @apply text-rose-500;
+  }
+}
+
+@layer utilities {
+  .gradient-rose {
+    background: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.7) 100%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #f43f5e 0%, #fb923c 100%);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .page-enter {
+  animation: pageEnter 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+}
+
+/* ── Dark mode ── */
+html.dark {
+  color-scheme: dark;
+}
+
+html.dark body {
+  background-color: #0d0d1a;
+  color: #ececf1;
+}
+
+html.dark .card,
+html.dark [class*="bg-white"] {
+  background-color: #16162a !important;
+}
+
+html.dark [class*="bg-cream"] {
+  background-color: #0d0d1a !important;
+}
+
+html.dark [class*="bg-gray-50"] {
+  background-color: #16162a !important;
+}
+
+html.dark [class*="bg-gray-100"] {
+  background-color: #1e1e32 !important;
+}
+
+html.dark [class*="border-gray-100"],
+html.dark [class*="border-gray-200"] {
+  border-color: #2a2a42 !important;
+}
+
+html.dark [class*="text-gray-900"] { color: #ececf1 !important; }
+html.dark [class*="text-gray-800"] { color: #d8d8e8 !important; }
+html.dark [class*="text-gray-700"] { color: #b8b8cc !important; }
+html.dark [class*="text-gray-600"] { color: #9898b0 !important; }
+html.dark [class*="text-gray-500"] { color: #787890 !important; }
+html.dark [class*="text-gray-400"] { color: #606078 !important; }
+html.dark [class*="text-gray-300"] { color: #484860 !important; }
+
+html.dark input,
+html.dark textarea {
+  background-color: #1e1e32 !important;
+  border-color: #2a2a42 !important;
+  color: #ececf1 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #606078 !important;
+}
+
+html.dark nav,
+html.dark header {
+  background-color: rgba(13,13,26,0.95) !important;
+  border-color: #2a2a42 !important;
+}
